@@ -5,29 +5,25 @@ const Triangle = require('./lib/triangle');
 const Square = require('./lib/square');
 
 let shape;
-function renderShape(selectedShape, fillColor){
+function renderShape(selectedShape, fillColor, text, textColor){
     console.log(selectedShape);
     if(selectedShape === 'circle'){
-        shape = new Circle();
-        shape.fillColor = fillColor;
+        shape = new Circle(fillColor, text, textColor);
         return shape.render();
     };
     if(selectedShape === 'square'){
-        shape = new Square();
-        shape.fillColor = fillColor;
+        shape = new Square(fillColor, text, textColor);
         return shape.render();
     };
     if(selectedShape === 'triangle'){
-        shape = new Triangle();
-        shape.fillColor = fillColor;
+        shape = new Triangle(fillColor, text, textColor);
         return shape.render();
     };
 };
 
-const generateLogo = ({text, textColor, shape, backgroundColor}) =>
+const generateLogo = ({text, textColor, shape, fillColor}) =>
 `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-${renderShape(shape, fillColor)}
-<text x="150" y="125" font-size="60" text-anchor="middle" fill=${this.textColor}>${this.text}</text>
+${renderShape(shape, fillColor, text, textColor)}
 </svg>`
 
 const questions = [
